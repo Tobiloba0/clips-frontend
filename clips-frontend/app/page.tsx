@@ -60,7 +60,15 @@ import AiInsightCard from "./components/AiInsightCard";
 import MetricsCards from "./MetricsCards";
 import ProcessDashboard from "./components/ProcessDashboard";
 import ConnectAccountsSection from "./components/ConnectAccountsSection";
+
+import { PlatformSelectChips } from "@/components/profile-setup/PlatformSelectChips";
+
+ feat/ui-ai-pulsing-status
+import PulsingAIStatus from "./components/PulsingAIStatus";
+
 import RevenueTrendChart from "@/components/RevenueTrendChart";
+
+
 
 export default function Home() {
   return (
@@ -106,12 +114,22 @@ export default function Home() {
             <AiInsightCard />
           </section>
 
+          <section className="w-full flex justify-center pt-5 pb-3">
+            <PulsingAIStatus/>
+          </section>
+
           {/* Progress */}
           <section>
             <ProgressCard
               percentage={87}
               estimatedTimeRemaining="1 minute 15 seconds"
             />
+          </section>
+
+          {/* Test Platform Selection Chips Component */}
+          <section className="p-6 bg-[#121212] rounded-2xl border border-[#2a2a2a]">
+            <h2 className="text-xl font-semibold mb-4">Target Platforms (Test)</h2>
+            <PlatformSelectChips />
           </section>
 
           {/* Connect Accounts */}
