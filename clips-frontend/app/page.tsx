@@ -3,6 +3,7 @@ import AiInsightCard from "./components/AiInsightCard";
 import MetricsCards from "./MetricsCards";
 import ProcessDashboard from "./components/ProcessDashboard";
 import ConnectAccountsSection from "./components/ConnectAccountsSection";
+import CreatorBadge from "./components/CreatorsBadge";
 
 export default function Home() {
   return (
@@ -54,6 +55,11 @@ export default function Home() {
               percentage={87}
               estimatedTimeRemaining="1 minute 15 seconds"
             />
+          </section>
+
+
+          <section>
+            <CreatorBadge />
           </section>
 
           {/* Connect Accounts */}

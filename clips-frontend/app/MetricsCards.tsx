@@ -54,6 +54,12 @@ const METRICS = [
   },
 ];
 
+const cardData = [
+  { label: "Clips Generated", value: "1,284" },
+  { label: "Total Views", value: "2.4M" },
+  { label: "Revenue", value: "$3,820" },
+];
+
 export default function MetricsCards() {
   return (
 
@@ -133,5 +139,7 @@ export default function MetricsCards() {
       </div>
 
     </div>
+
+    </div>
   );
-}v
+}
