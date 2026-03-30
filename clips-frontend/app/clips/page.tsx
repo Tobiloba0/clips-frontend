@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import ClipsHeader from "../components/ClipsHeader";
+import FilterSidebar from "../components/FilterSidebar";
 
 interface Clip {
   id: string;
@@ -80,42 +81,50 @@ export default function ClipsPage() {
         onSortChange={handleSortChange}
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {sortedClips.map((clip) => (
-            <div
-              key={clip.id}
-              className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
-            >
-              {/* Thumbnail */}
-              <div className="aspect-video bg-gray-800 relative">
-                <div className="absolute inset-0 flex items-center justify-center text-white/50">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-2">
-                      ▶️
+      <div className="flex">
+        {/* Sidebar */}
+        <FilterSidebar />
+
+        {/* Main Content */}
+        <main className="flex-1">
+          <div className="max-w-7xl mx-auto px-6 py-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {sortedClips.map((clip) => (
+                <div
+                  key={clip.id}
+                  className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-colors cursor-pointer"
+                >
+                  {/* Thumbnail */}
+                  <div className="aspect-video bg-gray-800 relative">
+                    <div className="absolute inset-0 flex items-center justify-center text-white/50">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-2">
+                          ▶️
+                        </div>
+                        <p className="text-sm">Preview</p>
+                      </div>
                     </div>
-                    <p className="text-sm">Preview</p>
+                    {/* Duration badge */}
+                    <div className="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded text-xs">
+                      {clip.duration}s
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-4">
+                    <h3 className="font-medium text-white mb-2 line-clamp-2">
+                      {clip.title}
+                    </h3>
+                    <div className="flex items-center justify-between text-sm text-white/60">
+                      <span>Engagement: {clip.engagement}%</span>
+                      <span>{clip.createdAt.toLocaleDateString()}</span>
+                    </div>
                   </div>
                 </div>
-                {/* Duration badge */}
-                <div className="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded text-xs">
-                  {clip.duration}s
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-4">
-                <h3 className="font-medium text-white mb-2 line-clamp-2">
-                  {clip.title}
-                </h3>
-                <div className="flex items-center justify-between text-sm text-white/60">
-                  <span>Engagement: {clip.engagement}%</span>
-                  <span>{clip.createdAt.toLocaleDateString()}</span>
-                </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        </main>
       </div>
     </div>
   );
