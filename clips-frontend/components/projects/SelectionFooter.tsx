@@ -6,14 +6,17 @@ import {
   Trash2, 
   Download, 
   Zap, 
-  MoveRight 
+  MoveRight,
+  Hexagon
 } from "lucide-react";
 
 interface SelectionFooterProps {
   count: number;
+  onMint: () => void;
+  isMinting?: boolean;
 }
 
-export default function SelectionFooter({ count }: SelectionFooterProps) {
+export default function SelectionFooter({ count, onMint, isMinting = false }: SelectionFooterProps) {
   if (count === 0) return null;
 
   return (
@@ -49,9 +52,23 @@ export default function SelectionFooter({ count }: SelectionFooterProps) {
             <span>AUTO-SCHEDULE ON</span>
           </button>
           
-          <button className="flex items-center gap-3 px-10 py-4 rounded-3xl bg-[#00E58F] text-black font-black text-[15px] transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_30px_rgba(0,229,143,0.2)]">
-            <span>Post Selected Clips</span>
-            <MoveRight className="w-5 h-5 ml-1" />
+          <button 
+            onClick={onMint}
+            disabled={isMinting || count === 0}
+            className={`flex items-center gap-3 px-10 py-4 rounded-3xl text-black font-black text-[15px] transition-all ${
+              isMinting 
+                ? "bg-[#00E58F]/50 cursor-not-allowed" 
+                : "bg-[#00E58F] hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_30px_rgba(0,229,143,0.2)]"
+            }`}
+          >
+            {isMinting ? (
+              <span>Minting...</span>
+            ) : (
+              <>
+                <span>Mint Selected Clips</span>
+                <Hexagon className="w-5 h-5 ml-1 fill-black/20" />
+              </>
+            )}
           </button>
         </div>
       </div>
