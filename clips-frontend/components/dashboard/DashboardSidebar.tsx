@@ -73,10 +73,10 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
               className={`sidebar-nav-item flex items-center gap-3 rounded-xl transition-all duration-200 group ${
                 isActive 
                   ? "bg-brand/10 text-brand font-bold" 
-                  : "text-[#8e9895] hover:text-white hover:bg-white/[0.03]"
+                  : "text-muted hover:text-white hover:bg-white/[0.03]"
               }`}
             >
-              <item.icon className={`w-5 h-5 ${isActive ? "text-brand" : "text-[#4A5D54] group-hover:text-white"}`} />
+              <item.icon className={`w-5 h-5 ${isActive ? "text-brand" : "text-muted-foreground group-hover:text-white"}`} />
               <span className="text-[14px]">{item.label}</span>
               {isActive && (
                 <div className="ml-auto w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_rgba(0,229,143,0.8)]" />
@@ -88,7 +88,7 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
 
       {/* Pro Plan Card */}
       <div className="px-6 mb-6">
-        <div className="bg-[#0C120F] border border-[#1A2621] rounded-[20px] p-5 relative overflow-hidden group">
+        <div className="bg-surface border border-border rounded-[20px] p-5 relative overflow-hidden group">
           <div className="absolute -top-12 -right-12 w-24 h-24 bg-brand/10 blur-[40px] rounded-full pointer-events-none" />
           
           <div className="flex justify-between items-start mb-4">
@@ -99,7 +99,7 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
             <Zap className="w-4 h-4 text-brand fill-brand" />
           </div>
 
-          <div className="w-full h-1.5 bg-[#17201C] rounded-full mb-5 overflow-hidden">
+          <div className="w-full h-1.5 bg-surface-hover rounded-full mb-5 overflow-hidden">
             <div 
               className="h-full bg-brand rounded-full shadow-[0_0_10px_rgba(0,229,143,0.5)]" 
               style={{ width: "80%" }} 
@@ -130,7 +130,7 @@ export default function DashboardSidebar({ isOpen, onClose }: SidebarProps) {
             <div className="text-[14px] font-bold text-white truncate">
               {user?.username || user?.name || "Alex Rivera"}
             </div>
-            <div className="text-[11px] text-[#5A6F65] truncate">
+            <div className="text-[11px] text-muted-foreground truncate">
               {user?.email || "alex@clipcash.ai"}
             </div>
           </div>
