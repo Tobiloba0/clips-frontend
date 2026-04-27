@@ -43,7 +43,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const setUser = (newUser: User | null) => {
     setUserState(newUser);
     if (newUser) {
-      localStorage.setItem("clipcash_user", JSON.stringify(newUser));
+      // Strip password field before persisting to localStorage for security.
+      // Never store sensitive credentials in browser storage.
+      const { password, ...safeUser } = newUser;
+      localStorage.setItem("clipcash_user", JSON.stringify(safeUser));
     } else {
       localStorage.removeItem("clipcash_user");
     }
